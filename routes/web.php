@@ -7,18 +7,9 @@ use Illuminate\Support\Facades\Route;
 // });
 
 // Routing Landing Page
-// Route::get('/', function () {
-//     return view('landing_page.index');
-// });
-
-// Karena Landing Page Belum Selesai Di Buat
-// Sementara
-// Routing Admin Panel
 Route::get('/', function () {
-    return view('admin_panel.pages.index');
+    return view('landing_page.pages.index');
 });
-// Sementara
-// Karena Landing Page Belum Selesai Di Buat
 
 // Routing Auth
 Route::get('/Login', function () {
