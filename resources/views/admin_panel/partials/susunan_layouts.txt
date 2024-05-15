@@ -1,0 +1,4 @@
+1. header
+2. sidebar
+3. navbar
+4. footer
