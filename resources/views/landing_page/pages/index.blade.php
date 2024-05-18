@@ -1,7 +1,6 @@
-<!-- resources/views/pages/index.blade.php -->
 @extends('landing_page.layouts.master')
 
-@section('title', 'Home')
+@section('title', 'HomePage')
 
 @section('content')
     <!-- Start Hero Section -->
@@ -10,9 +9,8 @@
             <div class="row justify-content-between">
                 <div class="col-lg-5">
                     <div class="intro-excerpt">
-                        <h1>Modern Interior <span clsas="d-block">Design Studio</span></h1>
-                        <p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit.
-                            Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
+                        <h1>Si ApoTrack <span class="d-block">Apotik Bogor</span></h1>
+                        <p class="mb-4">ApoTrack adalah sebuah aplikasi berbasis web yang dirancang khusus untuk mengelola sebuah apotik. Sistem Informasi apotik dalam mengelola inventaris obat, transaksi penjualan, dan manajemen data pelanggan.</p>
                         <p><a href="" class="btn btn-secondary me-2">Shop Now</a><a href="#"
                                 class="btn btn-white-outline">Explore</a></p>
                     </div>
