@@ -19,16 +19,16 @@ class UsersTableSeeder extends Seeder
             [
                 'nama' => 'Admin User',
                 'email' => 'admin@example.com',
-                'password' => Hash::make($password_default), // Replace 'password' with a secure password
-                'role_id' => 1, // Assuming role_id 1 is for Admin
+                'password' => Hash::make($password_default), 
+                'role_id' => 1, 
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'nama' => 'Regular User',
                 'email' => 'user@example.com',
-                'password' => Hash::make($password_default), // Replace 'password' with a secure password
-                'role_id' => 2, // Assuming role_id 2 is for User
+                'password' => Hash::make($password_default), 
+                'role_id' => 2, 
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
