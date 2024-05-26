@@ -24,8 +24,8 @@
                         </div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Eko Haryono</h6>
-                        <span>Admin</span>
+                        <h6 class="mb-0">{{ Auth::user()->nama }}</h6>
+                        <span>{{ Auth::user()->role }}</span>
                     </div>
                 </div>
 
@@ -104,7 +104,12 @@
                     </div>
                     {{-- Bantuan --}}
 
-                    <a href="table.html" class="nav-item nav-link"><i class="fa fa-sign-out-alt me-2"></i>Logout</a>
+                    {{-- Logout Form --}}
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="nav-item nav-link btn btn-link text-white"><i class="fa fa-sign-out-alt me-2"></i>Logout</button>
+                    </form>
+                    {{-- Logout Form --}}
                 </div>
             </nav>
         </div>
