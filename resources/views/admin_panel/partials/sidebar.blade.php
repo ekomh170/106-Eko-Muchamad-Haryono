@@ -25,7 +25,7 @@
                     </div>
                     <div class="ms-3">
                         <h6 class="mb-0">{{ Auth::user()->nama }}</h6>
-                        <span>{{ Auth::user()->role }}</span>
+                        <span>{{ Auth::user()->role->nama }}</span>
                     </div>
                 </div>
 

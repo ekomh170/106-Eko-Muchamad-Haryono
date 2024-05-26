@@ -1,6 +1,6 @@
 @extends('admin_panel.layouts.master')
 
-@section('title', 'Halaman Utama Data Obat')
+@section('title', 'Data Laporan')
 
 @section('content')
 

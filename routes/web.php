@@ -2,15 +2,20 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserProfileController;
+
+use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\ObatController;
+use App\Http\Controllers\MetodePembayaranController;
+use App\Http\Controllers\LaporanController;
+
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
-use App\Http\Controllers\PelangganController;
-use App\Http\Controllers\MetodePembayaranController;
-use App\Http\Controllers\ObatController;
-use App\Http\Controllers\TransaksiController;
-use App\Http\Controllers\LaporanController;
+
 use App\Http\Controllers\DetailTransaksiController;
-use App\Http\Controllers\DashboardController;
 
 // Routing Landing Page
 Route::get('/', function () {
@@ -43,6 +48,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/AdminPanel', [DashboardController::class, 'index']);
 
 // Routing Admin Panel -> Edit Profile
+Route::resource('/AdminPanel/EditProfile', UserProfileController::class);
 
 // Routing Admin Panel -> Pelanggan
 Route::resource('/AdminPanel/Pelanggan', PelangganController::class);
@@ -59,17 +65,11 @@ Route::resource('/AdminPanel/MetodePembayaran', MetodePembayaranController::clas
 // Routing Admin Panel -> Laporan
 Route::resource('/AdminPanel/Laporan', LaporanController::class);
 
-
-
-
-
 // Routing  Admin Panel -> Users
 Route::resource('/AdminPanel/Users', UserController::class);
 
 // Routing  Admin Panel -> Roles
 Route::resource('/AdminPanel/Roles', RoleController::class);
-
-
 
 // Routing  Admin Panel -> Detail Transaksi
 Route::resource('/AdminPanel/DetailTransaksi', DetailTransaksiController::class);
