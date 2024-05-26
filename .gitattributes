@@ -1,6 +1,13 @@
-# Mengatur file PHP agar dikenali sebagai bagian dari proyek PHP
 *.php linguist-language=PHP
 
-# Mengabaikan direktori vendor agar tidak mempengaruhi deteksi bahasa
-vendor/* linguist-vendored
-node_modules/* linguist-vendored
+* text=auto eol=lf
+
+*.blade.php diff=html
+*.css diff=css
+*.html diff=html
+*.md diff=markdown
+*.php diff=php
+
+/.github export-ignore
+CHANGELOG.md export-ignore
+.styleci.yml export-ignore
