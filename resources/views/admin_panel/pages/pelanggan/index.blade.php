@@ -8,11 +8,22 @@
     <div class="row g-4">
         <div class="col-12">
             <div class="bg-secondary rounded h-100 p-4">
-                <h6 class="mb-4">Daftar Pelanggan</h6>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h6 class="mb-0">Daftar Pelanggan</h6>
+                    <a href="{{ route('Pelanggan.create') }}" class="btn btn-success">Tambah Data</a>
+                </div>
                 
-                <!-- Search Bar -->
-                <div class="mb-3">
-                    <input type="text" class="form-control" id="search" placeholder="Cari pelanggan...">
+                <!-- Search and Filter Bar -->
+                <div class="d-flex justify-content-between mb-3">
+                    <form method="GET" action="{{ route('Pelanggan.index') }}" class="d-flex">
+                        <input type="text" class="form-control me-2" name="search" id="search" placeholder="Cari pelanggan..." value="{{ request('search') }}">
+                        <select name="sort" class="form-select me-2">
+                            <option value="">Sort By</option>
+                            <option value="latest" {{ request('sort') == 'latest' ? 'selected' : '' }}>Terbaru</option>
+                            <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>Lama</option>
+                        </select>
+                        <button type="submit" class="btn btn-primary">Filter</button>
+                    </form>
                 </div>
                 
                 <!-- Tabel Pelanggan -->
@@ -32,7 +43,7 @@
                         <tbody>
                             @foreach($pelanggan as $index => $p)
                                 <tr>
-                                    <th scope="row">{{ $index + 1 }}</th>
+                                    <th scope="row">{{ $pelanggan->firstItem() + $index }}</th>
                                     <td>{{ $p->kode_pelanggan }}</td>
                                     <td>{{ $p->nama_pelanggan }}</td>
                                     <td>{{ $p->alamat }}</td>
@@ -58,19 +69,22 @@
                         </tbody>
                     </table>
                 </div>
+                
+                <!-- Pagination Links -->
+                <div class="d-flex justify-content-center mt-3">
+                    {{ $pelanggan->links('admin_panel.partials.pagination') }}
+                </div>
+                
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    document.getElementById('search').addEventListener('keyup', function() {
-        let filter = this.value.toUpperCase();
-        let rows = document.querySelectorAll('#pelangganTable tbody tr');
-        rows.forEach(row => {
-            let text = row.innerText.toUpperCase();
-            row.style.display = text.indexOf(filter) > -1 ? '' : 'none';
-        });
+    document.getElementById('search').addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') {
+            this.form.submit();
+        }
     });
 </script>
 

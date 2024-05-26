@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class PelangganSeeder extends Seeder
 {
@@ -19,7 +20,7 @@ class PelangganSeeder extends Seeder
                 'alamat' => $this->generateRandomAddress(),
                 'no_telp' => $this->generateRandomPhoneNumber(),
                 'no_wa' => $this->generateRandomPhoneNumber(),
-                'created_at' => now(),
+                'created_at' => $this->generateRandomDate(),
                 'updated_at' => now()
             ];
         }
@@ -46,5 +47,14 @@ class PelangganSeeder extends Seeder
     private function generateRandomPhoneNumber()
     {
         return '08' . rand(1000000000, 9999999999);
+    }
+
+    private function generateRandomDate()
+    {
+        $startTimestamp = strtotime('-1 week');
+        $endTimestamp = strtotime('now');
+        $randomTimestamp = rand($startTimestamp, $endTimestamp);
+        
+        return Carbon::createFromTimestamp($randomTimestamp)->toDateTimeString();
     }
 }

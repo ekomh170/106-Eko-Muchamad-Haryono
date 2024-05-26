@@ -7,10 +7,32 @@ use Illuminate\Http\Request;
 
 class PelangganController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $pelanggan = Pelanggan::all();
-        return view('admin_panel.pages.pelanggan.index', compact('pelanggan'));
+        $search = $request->input('search');
+        $sort = $request->input('sort', 'latest'); // Set default to 'latest' if not provided
+
+        $query = Pelanggan::query();
+
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('kode_pelanggan', 'LIKE', "%{$search}%")
+                    ->orWhere('nama_pelanggan', 'LIKE', "%{$search}%")
+                    ->orWhere('alamat', 'LIKE', "%{$search}%")
+                    ->orWhere('no_telp', 'LIKE', "%{$search}%")
+                    ->orWhere('no_wa', 'LIKE', "%{$search}%");
+            });
+        }
+
+        if ($sort == 'latest') {
+            $query->orderBy('created_at', 'desc');
+        } elseif ($sort == 'oldest') {
+            $query->orderBy('created_at', 'asc');
+        }
+
+        $pelanggan = $query->paginate(5)->appends(['search' => $search, 'sort' => $sort]);
+
+        return view('admin_panel.pages.pelanggan.index', compact('pelanggan', 'search', 'sort'));
     }
 
     public function create()
