@@ -18,9 +18,9 @@
                     <form method="GET" action="{{ route('MetodePembayaran.index') }}" class="d-flex">
                         <input type="text" class="form-control me-2" name="search" id="search" placeholder="Cari metode pembayaran..." value="{{ request('search') }}">
                         <select name="sort" class="form-select me-2">
-                            <option value="">Urutkan Berdasarkan</option>
+                            <option value="">Sort By</option>
                             <option value="latest" {{ request('sort') == 'latest' ? 'selected' : '' }}>Terbaru</option>
-                            <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>Terlama</option>
+                            <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>Lama</option>
                         </select>
                         <button type="submit" class="btn btn-primary">Saring</button>
                     </form>
