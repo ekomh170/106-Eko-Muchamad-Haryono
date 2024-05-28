@@ -21,6 +21,20 @@ class Pelanggan extends Model
         'no_wa',
     ];
 
+    public static function generateKodePelanggan()
+    {
+        $latestPelanggan = self::orderBy('id_pelanggan', 'desc')->first();
+
+        if (!$latestPelanggan) {
+            $number = 1;
+        } else {
+            $lastNumber = (int) substr($latestPelanggan->kode_pelanggan, 4);
+            $number = $lastNumber + 1;
+        }
+
+        return 'PLG-' . str_pad($number, 3, '0', STR_PAD_LEFT);
+    }
+
     public function transaksi()
     {
         return $this->hasMany(Transaksi::class, 'id_pelanggan', 'id_pelanggan');

@@ -42,13 +42,16 @@ class PelangganController extends Controller
 
     public function store(Request $request)
     {
+        $kodePelanggan = Pelanggan::generateKodePelanggan();
+
         $validatedData = $request->validate([
-            'kode_pelanggan' => 'required|unique:pelanggan|max:255',
             'nama_pelanggan' => 'required|max:255',
             'alamat' => 'nullable',
             'no_telp' => 'nullable',
             'no_wa' => 'nullable',
         ]);
+
+        $validatedData['kode_pelanggan'] = $kodePelanggan;
 
         Pelanggan::create($validatedData);
 
@@ -86,6 +89,6 @@ class PelangganController extends Controller
     {
         Pelanggan::where('id_pelanggan', $id)->delete();
 
-        return redirect()->route('pelanggan.index')->with('success', 'Pelanggan berhasil dihapus');
+        return redirect()->route('Pelanggan.index')->with('success', 'Pelanggan berhasil dihapus');
     }
 }

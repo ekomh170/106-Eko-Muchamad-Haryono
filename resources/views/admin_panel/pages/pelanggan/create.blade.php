@@ -15,10 +15,6 @@
                     <form action="{{ route('Pelanggan.store') }}" method="POST">
                         @csrf
                         <div class="mb-3">
-                            <label for="kode_pelanggan" class="form-label"><i class="fas fa-id-badge"></i> Kode Pelanggan</label>
-                            <input type="text" class="form-control" id="kode_pelanggan" name="kode_pelanggan" placeholder="Masukkan Kode Pelanggan" required>
-                        </div>
-                        <div class="mb-3">
                             <label for="nama_pelanggan" class="form-label"><i class="fas fa-user"></i> Nama Pelanggan</label>
                             <input type="text" class="form-control" id="nama_pelanggan" name="nama_pelanggan" placeholder="Masukkan Nama Pelanggan" required>
                         </div>
