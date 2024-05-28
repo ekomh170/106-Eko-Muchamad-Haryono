@@ -16,11 +16,13 @@ class Transaksi extends Model
     protected $fillable = [
         'kode_transaksi',
         'tanggal_transaksi',
-        'total_pembayaran',
         'id_pelanggan',
         'id_metode_pembayaran',
-        'tanggal_cetak',
+
+        // 'total_pembayaran',
+        // 'tanggal_cetak',
     ];
+    
 
     public function pelanggan()
     {
@@ -35,5 +37,19 @@ class Transaksi extends Model
     public function detailTransaksi()
     {
         return $this->hasMany(DetailTransaksi::class, 'id_transaksi', 'id_transaksi');
+    }
+
+    public static function generateKodeTransaksi()
+    {
+        $latestTransaksi = self::orderBy('id_transaksi', 'desc')->first();
+
+        if (!$latestTransaksi) {
+            $number = 1;
+        } else {
+            $lastNumber = (int) substr($latestTransaksi->kode_transaksi, 4);
+            $number = $lastNumber + 1;
+        }
+
+        return 'TRX' . str_pad($number, 3, '0', STR_PAD_LEFT);
     }
 }

@@ -12,12 +12,11 @@ class CreateTransaksiTable extends Migration
             $table->id('id_transaksi');
             $table->string('kode_transaksi')->unique();
             $table->date('tanggal_transaksi');
-            $table->decimal('total_pembayaran', 15, 2);
+            $table->decimal('total_pembayaran', 15, 2)->nullable();
             $table->unsignedBigInteger('id_pelanggan');
             $table->unsignedBigInteger('id_metode_pembayaran');
-            $table->date('tanggal_cetak');
+            $table->date('tanggal_cetak')->nullable();;
             $table->timestamps();
-
             $table->foreign('id_pelanggan')->references('id_pelanggan')->on('pelanggan')->onDelete('cascade');
             $table->foreign('id_metode_pembayaran')->references('id_metode_pembayaran')->on('metode_pembayaran')->onDelete('cascade');
         });

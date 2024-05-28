@@ -21,6 +21,11 @@ class Pelanggan extends Model
         'no_wa',
     ];
 
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class, 'id_pelanggan', 'id_pelanggan');
+    }
+
     public static function generateKodePelanggan()
     {
         $latestPelanggan = self::orderBy('id_pelanggan', 'desc')->first();
@@ -32,11 +37,6 @@ class Pelanggan extends Model
             $number = $lastNumber + 1;
         }
 
-        return 'PLG-' . str_pad($number, 3, '0', STR_PAD_LEFT);
-    }
-
-    public function transaksi()
-    {
-        return $this->hasMany(Transaksi::class, 'id_pelanggan', 'id_pelanggan');
+        return 'PLG' . str_pad($number, 3, '0', STR_PAD_LEFT);
     }
 }
