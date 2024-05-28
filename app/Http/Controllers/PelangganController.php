@@ -25,9 +25,9 @@ class PelangganController extends Controller
         }
 
         if ($sort == 'latest') {
-            $query->orderBy('created_at', 'desc');
+            $query->orderBy('kode_pelanggan', 'desc');
         } elseif ($sort == 'oldest') {
-            $query->orderBy('created_at', 'asc');
+            $query->orderBy('kode_pelanggan', 'asc');
         }
 
         $pelanggan = $query->paginate(5)->appends(['search' => $search, 'sort' => $sort]);
