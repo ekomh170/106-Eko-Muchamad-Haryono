@@ -44,33 +44,35 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // ====================================================================
 
-// Routing Admin Panel -> Dashboard
-Route::get('/AdminPanel', [DashboardController::class, 'index']);
+// Routing Admin Panel dengan Middleware Auth
+Route::middleware(['auth'])->group(function () {
+    // Dashboard
+    Route::get('/AdminPanel', [DashboardController::class, 'index']);
 
-// Routing Admin Panel -> Edit Profile
-Route::resource('/AdminPanel/EditProfile', UserProfileController::class);
+    // Edit Profile
+    Route::resource('/AdminPanel/EditProfile', UserProfileController::class);
 
-// Routing Admin Panel -> Pelanggan
-Route::resource('/AdminPanel/Pelanggan', PelangganController::class);
+    // Pelanggan
+    Route::resource('/AdminPanel/Pelanggan', PelangganController::class);
 
-// Routing Admin Panel -> Transaksi
-Route::resource('/AdminPanel/Transaksi', TransaksiController::class);
+    // Transaksi
+    Route::resource('/AdminPanel/Transaksi', TransaksiController::class);
 
-// Routing Admin Panel -> Obat
-Route::resource('/AdminPanel/Obat', ObatController::class);
+    // Obat
+    Route::resource('/AdminPanel/Obat', ObatController::class);
 
-// Routing Admin Panel -> Metode Pembayaran
-Route::resource('/AdminPanel/MetodePembayaran', MetodePembayaranController::class);
+    // Metode Pembayaran
+    Route::resource('/AdminPanel/MetodePembayaran', MetodePembayaranController::class);
 
-// Routing Admin Panel -> Laporan
-Route::resource('/AdminPanel/Laporan', LaporanController::class);
+    // Laporan
+    Route::resource('/AdminPanel/Laporan', LaporanController::class);
 
-// Routing  Admin Panel -> Users
-Route::resource('/AdminPanel/Users', UserController::class);
+    // Users
+    Route::resource('/AdminPanel/Users', UserController::class);
 
-// Routing  Admin Panel -> Roles
-Route::resource('/AdminPanel/Roles', RoleController::class);
+    // Roles
+    Route::resource('/AdminPanel/Roles', RoleController::class);
 
-// Routing  Admin Panel -> Detail Transaksi
-Route::resource('/AdminPanel/DetailTransaksi', DetailTransaksiController::class);
-
+    // Detail Transaksi
+    Route::resource('/AdminPanel/DetailTransaksi', DetailTransaksiController::class);
+});
