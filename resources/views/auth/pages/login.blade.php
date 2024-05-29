@@ -1,6 +1,6 @@
 @extends('auth.layouts.master')
 
-@section('title', 'Home')
+@section('title', 'Halaman Login')
 
 @section('content')
 <!-- Sign In Start -->
@@ -35,10 +35,6 @@
                         @enderror
                     </div>
                     <div class="d-flex align-items-center justify-content-between mb-4">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1" name="remember">
-                            <label class="form-check-label" for="exampleCheck1">Remember Me</label>
-                        </div>
                         {{-- <a href="{{ route('password.request') }}">Forgot Password?</a> --}}
                     </div>
                     <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
