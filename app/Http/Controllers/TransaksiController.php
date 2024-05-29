@@ -74,8 +74,10 @@ class TransaksiController extends Controller
 
     public function show($id)
     {
-        $transaksi = Transaksi::with('pelanggan', 'metodePembayaran')->findOrFail($id);
-        return view('transaksi.show', compact('transaksi'));
+        $transaksi = Transaksi::with('pelanggan', 'MetodePembayaran')->findOrFail($id);
+        // Yang Berelasi Dengan Detail Transaksi
+        $transaksi_list = $transaksi->detailTransaksi;
+        return view('admin_panel.pages.transaksi.show', compact('transaksi', 'transaksi_list'));
     }
 
     public function edit($id)

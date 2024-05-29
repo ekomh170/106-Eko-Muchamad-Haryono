@@ -33,6 +33,7 @@ Route::get('/services', function () {
 Route::get('/contact', function () {
     return view('landing_page.pages.contact');
 });
+
 // Routing Landing Page
 
 // ===================================================================
