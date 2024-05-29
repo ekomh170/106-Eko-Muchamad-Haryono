@@ -40,16 +40,19 @@
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="{{ url('/AdminPanel/Pelanggan') }}" class="dropdown-item {{ Request::is('AdminPanel/Pelanggan') ? 'active' : '' }}">Daftar Pelanggan</a>
                             <a href="{{ url('/AdminPanel/Pelanggan/create') }}" class="dropdown-item {{ Request::is('AdminPanel/Pelanggan/create') ? 'active' : '' }}">Tambah Pelanggan</a>
+                            
                         </div>
                     </div>
                     {{-- Manajemen Pelanggan --}}
 
                     {{-- Transaksi --}}
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle {{ Request::is('AdminPanel/Transaksi*') ? 'active' : '' }}" data-bs-toggle="dropdown"><i class="fa fa-exchange-alt me-2"></i>Transaksi</a>
+                        <a href="#" class="nav-link dropdown-toggle {{ Request::is('AdminPanel/Transaksi*') || Request::is('AdminPanel/DetailTransaksi*') ? 'active' : '' }}" data-bs-toggle="dropdown"><i class="fa fa-exchange-alt me-2"></i>Transaksi</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="{{ url('/AdminPanel/Transaksi') }}" class="dropdown-item {{ Request::is('AdminPanel/Transaksi') ? 'active' : '' }}">Daftar Transaksi</a>
                             <a href="{{ url('/AdminPanel/Transaksi/create') }}" class="dropdown-item {{ Request::is('AdminPanel/Transaksi/create') ? 'active' : '' }}">Tambah Transaksi</a>
+                            {{-- Details  Pelanggan --}}
+                            <a href="{{ url('/AdminPanel/DetailTransaksi/') }}" class="dropdown-item {{ Request::is('AdminPanel/DetailTransaksi/') ? 'active' : '' }}">Detail Transaksi</a>
                         </div>
                     </div>
                     {{-- Transaksi --}}
