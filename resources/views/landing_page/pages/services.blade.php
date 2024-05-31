@@ -10,15 +10,12 @@
                 <div class="col-lg-5">
                     <div class="intro-excerpt">
                         <h1>Layanan & Obat</h1>
-                        <p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam
-                            vulputate velit imperdiet dolor tempor tristique.</p>
-                        <p><a href="" class="btn btn-secondary me-2">Shop Now</a><a href="#"
-                                class="btn btn-white-outline">Explore</a></p>
+                        <p class="mb-4">Di apotek kami, kami menawarkan berbagai layanan dan obat-obatan untuk memenuhi kebutuhan kesehatan Anda. Kami menyediakan resep dan obat bebas, serta berbagai suplemen dan produk kesehatan lainnya. Layanan kami meliputi konsultasi kesehatan, pengecekan tekanan darah, dan pemeriksaan gula darah. Kami juga menawarkan layanan pengantaran obat untuk kenyamanan Anda. Dengan dukungan tenaga farmasi profesional, kami berkomitmen untuk memberikan solusi kesehatan yang aman, efektif, dan terpercaya.</p>
                     </div>
                 </div>
                 <div class="col-lg-7">
                     <div class="hero-img-wrap">
-                        <img src="images/couch.png" class="img-fluid">
+                        <img src="{{ asset('assets/landing_page/images/desain/apotik.png') }}" class="img-fluid" style="width: 600px">
                     </div>
                 </div>
             </div>
@@ -27,7 +24,7 @@
     <!-- End Hero Section -->
 
     <!-- Start Why Choose Us Section -->
-    <div class="why-choose-section">
+    {{-- <div class="why-choose-section">
         <div class="container">
 
 
@@ -115,11 +112,11 @@
             </div>
 
         </div>
-    </div>
+    </div> --}}
     <!-- End Why Choose Us Section -->
 
     <!-- Start Product Section -->
-    <div class="product-section pt-0">
+    {{-- <div class="product-section pt-0">
         <div class="container">
             <div class="row">
 
@@ -176,6 +173,6 @@
 
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- End Product Section -->
 @endsection

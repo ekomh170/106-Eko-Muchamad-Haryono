@@ -9,16 +9,13 @@
             <div class="row justify-content-between">
                 <div class="col-lg-5">
                     <div class="intro-excerpt">
-                        <h1>About Us</h1>
-                        <p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam
-                            vulputate velit imperdiet dolor tempor tristique.</p>
-                        <p><a href="" class="btn btn-secondary me-2">Shop Now</a><a href="#"
-                                class="btn btn-white-outline">Explore</a></p>
+                        <h1>Tentang Kami</h1>
+                        <p class="mb-4">Selamat datang di apotek kami, tempat di mana kesehatan dan kesejahteraan Anda adalah prioritas utama kami. Dengan pengalaman bertahun-tahun di industri farmasi, kami berkomitmen untuk menyediakan produk berkualitas tinggi dan layanan terbaik bagi pelanggan kami. Tim kami terdiri dari tenaga profesional yang siap membantu Anda dengan segala kebutuhan kesehatan Anda. Kami percaya bahwa kesehatan adalah aset berharga dan kami berusaha untuk menjadi mitra terpercaya dalam perjalanan kesehatan Anda.</p>
                     </div>
                 </div>
                 <div class="col-lg-7">
                     <div class="hero-img-wrap">
-                        <img src="images/couch.png" class="img-fluid">
+                        <img src="{{ asset('assets/landing_page/images/desain/apotik.png') }}" class="img-fluid" style="width: 600px">
                     </div>
                 </div>
             </div>
@@ -27,7 +24,7 @@
     <!-- End Hero Section -->
 
     <!-- Start Why Choose Us Section -->
-    <div class="why-choose-section">
+    {{-- <div class="why-choose-section">
         <div class="container">
             <div class="row justify-content-between align-items-center">
                 <div class="col-lg-6">
@@ -83,14 +80,9 @@
                     </div>
                 </div>
 
-                <div class="col-lg-5">
-                    <div class="img-wrap">
-                        <img src="images/why-choose-us-img.jpg" alt="Image" class="img-fluid">
-                    </div>
-                </div>
-
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- End Why Choose Us Section -->
+
 @endsection

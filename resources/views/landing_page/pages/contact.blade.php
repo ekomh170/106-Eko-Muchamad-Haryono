@@ -9,16 +9,16 @@
             <div class="row justify-content-between">
                 <div class="col-lg-5">
                     <div class="intro-excerpt">
-                        <h1>Contact</h1>
-                        <p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam
-                            vulputate velit imperdiet dolor tempor tristique.</p>
-                        <p><a href="" class="btn btn-secondary me-2">Shop Now</a><a href="#"
-                                class="btn btn-white-outline">Explore</a></p>
+                        <h1>Kontak</h1>
+                        <p class="mb-4">Jika Anda tertarik untuk menjalin kerjasama dengan pemilik apotek, silakan hubungi
+                            kami melalui informasi kontak yang tersedia. Kami selalu terbuka untuk diskusi dan kolaborasi
+                            yang dapat saling menguntungkan. Jangan ragu untuk menghubungi kami untuk berbagai peluang
+                            kemitraan yang menarik.</p>
                     </div>
                 </div>
                 <div class="col-lg-7">
                     <div class="hero-img-wrap">
-                        <img src="images/couch.png" class="img-fluid">
+                        <img src="{{ asset('assets/landing_page/images/desain/apotik.png') }}" class="img-fluid" style="width: 500px">
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                                         </svg>
                                     </div> <!-- /.icon -->
                                     <div class="service-contents">
-                                        <p>43 Raymouth Rd. Baltemoer, London 3910</p>
+                                        <p>Jalan Puspanegara, Kp.Kamurang, RT.02/RW.08, Puspanegara, Citeureup</p>
                                     </div> <!-- /.service-contents-->
                                 </div> <!-- /.service -->
                             </div>
@@ -65,7 +65,7 @@
                                         </svg>
                                     </div> <!-- /.icon -->
                                     <div class="service-contents">
-                                        <p>info@yourdomain.com</p>
+                                        <p>ekomh13@gmail.com</p>
                                     </div> <!-- /.service-contents-->
                                 </div> <!-- /.service -->
                             </div>
@@ -81,7 +81,7 @@
                                         </svg>
                                     </div> <!-- /.icon -->
                                     <div class="service-contents">
-                                        <p>+1 294 3925 3939</p>
+                                        <p>082246105463</p>
                                     </div> <!-- /.service-contents-->
                                 </div> <!-- /.service -->
                             </div>
