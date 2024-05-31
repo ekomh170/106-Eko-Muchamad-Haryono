@@ -53,9 +53,9 @@
                                         <form action="{{ route('Roles.destroy', $role->id) }}" method="POST" style="display:inline-block;">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                                <i class="fa fa-trash"></i>
-                                            </button>
+                                            <button type="submit" class="btn btn-danger btn-sm delete-btn">
+        <i class="fa fa-trash"></i>
+    </button>
                                         </form>
                                     </td>
                                 </tr>

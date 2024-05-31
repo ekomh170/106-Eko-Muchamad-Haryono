@@ -46,7 +46,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // ====================================================================
 
 // Routing Admin Panel dengan Middleware Auth
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['web', 'auth'])->group(function () {
     // Dashboard
     Route::get('/AdminPanel', [DashboardController::class, 'index']);
 
