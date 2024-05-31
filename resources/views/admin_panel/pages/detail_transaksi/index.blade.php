@@ -10,7 +10,6 @@
             <div class="bg-secondary rounded h-100 p-4">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h6 class="mb-0">Daftar Detail Transaksi</h6>
-                    <a href="{{ route('DetailTransaksi.create') }}" class="btn btn-success">Tambah Data</a>
                 </div>
                 
                 <!-- Search and Filter Bar -->
@@ -50,19 +49,9 @@
                                     <td>{{ $detail->obat->nama_obat }}</td>
                                     <td>{{ $detail->jumlah_obat }}</td>
                                     <td>
-                                        <a href="{{ route('DetailTransaksi.show', $detail->id_detail_transaksi) }}" class="btn btn-info btn-sm">
+                                        <a href="{{ route('DetailTransaksi.show', $detail->id_transaksi) }}" class="btn btn-info btn-sm">
                                             <i class="fa fa-eye"></i>
                                         </a>
-                                        <a href="{{ route('DetailTransaksi.edit', $detail->id_detail_transaksi) }}" class="btn btn-warning btn-sm">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <form action="{{ route('DetailTransaksi.destroy', $detail->id_detail_transaksi) }}" method="POST" style="display:inline-block;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                                <i class="fa fa-trash"></i>
-                                            </button>
-                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

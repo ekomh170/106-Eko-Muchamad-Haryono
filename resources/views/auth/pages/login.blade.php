@@ -37,7 +37,7 @@
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         {{-- <a href="{{ route('password.request') }}">Forgot Password?</a> --}}
                     </div>
-                    <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
+                    <button type="submit" class="btn btn-success py-3 w-100 mb-4" style="background-color: #3FFF00">Sign In</button>
                 </form>
                 {{-- <p class="text-center mb-0">Don't have an Account? <a href="{{ route('register') }}">Sign Up</a></p> --}}
             </div>

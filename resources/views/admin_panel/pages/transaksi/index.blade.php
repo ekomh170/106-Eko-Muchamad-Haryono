@@ -51,7 +51,7 @@
                                     <td>{{ $t->pelanggan->nama_pelanggan }}</td>
                                     <td>{{ $t->metodePembayaran->nama_metode_pembayaran }}</td>
                                     <td>
-                                        <a href="{{ route('Transaksi.show', $t->id_transaksi) }}" class="btn btn-info btn-sm" data-bs-toggle="tooltip" title="Lihat Detail">
+                                        <a href="{{ route('DetailTransaksi.show', $t->id_transaksi) }}" class="btn btn-info btn-sm" data-bs-toggle="tooltip" title="Lihat Detail">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                         <a href="{{ route('Transaksi.edit', $t->id_transaksi) }}" class="btn btn-warning btn-sm" data-bs-toggle="tooltip" title="Edit Data">

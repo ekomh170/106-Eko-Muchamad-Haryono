@@ -18,9 +18,8 @@ class Transaksi extends Model
         'tanggal_transaksi',
         'id_pelanggan',
         'id_metode_pembayaran',
-
-        // 'total_pembayaran',
-        // 'tanggal_cetak',
+        'total_pembayaran',
+        'tanggal_cetak',
     ];
     
 

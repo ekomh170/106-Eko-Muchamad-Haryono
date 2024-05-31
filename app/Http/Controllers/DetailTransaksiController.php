@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\DetailTransaksi;
 use App\Models\Transaksi;
 use App\Models\Obat;
+use App\Models\Pelanggan;
+use App\Models\MetodePembayaran;
+
 use Illuminate\Http\Request;
 
 class DetailTransaksiController extends Controller
@@ -39,58 +42,76 @@ class DetailTransaksiController extends Controller
         return view('admin_panel.pages.detail_transaksi.index', compact('detail_transaksi', 'search', 'sort'));
     }
 
-
-    public function create()
-    {
-        $transaksi = Transaksi::all();
-        $obat = Obat::all();
-        return view('admin_panel.pages.detail_transaksi.create', compact('transaksi', 'obat'));
-    }
-
-    public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'jumlah_obat' => 'required|integer',
-            'id_transaksi' => 'required|exists:transaksi,id_transaksi',
-            'id_obat' => 'required|exists:obat,id_obat',
-        ]);
-
-        DetailTransaksi::create($validatedData);
-
-        return redirect()->route('detail_transaksi.index')->with('success', 'Detail Transaksi berhasil ditambahkan');
-    }
-
     public function show($id)
     {
-        $detail_transaksi = DetailTransaksi::with('transaksi', 'obat')->findOrFail($id);
-        return view('admin_panel.pages.detail_transaksi.show', compact('detail_transaksi'));
+        $transaksi = Transaksi::with('pelanggan', 'MetodePembayaran')->findOrFail($id);
+        // Yang Berelasi Dengan Detail Transaksi
+        $transaksi_list = $transaksi->detailTransaksi;
+        return view('admin_panel.pages.detail_transaksi.show', compact('transaksi', 'transaksi_list'));
     }
 
     public function edit($id)
     {
-        $detail_transaksi = DetailTransaksi::findOrFail($id);
-        $transaksi = Transaksi::all();
+        $transaksi = Transaksi::with('detailTransaksi')->findOrFail($id);
+        $pelanggan = Pelanggan::all();
+        $metode_pembayaran = MetodePembayaran::all();
         $obat = Obat::all();
-        return view('admin_panel.pages.detail_transaksi.edit', compact('detail_transaksi', 'transaksi', 'obat'));
+        return view('admin_panel.pages.detail_transaksi.edit', compact('transaksi', 'pelanggan', 'metode_pembayaran', 'obat'));
     }
 
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'jumlah_obat' => 'required|integer',
-            'id_transaksi' => 'required|exists:transaksi,id_transaksi',
-            'id_obat' => 'required|exists:obat,id_obat',
+            'tanggal_transaksi' => 'required|date',
+            'id_pelanggan' => 'required|exists:pelanggan,id_pelanggan',
+            'details.*.id_obat' => 'required|exists:obat,id_obat',
+            'details.*.jumlah_obat' => 'required|integer|min:1',
         ]);
 
-        DetailTransaksi::where('id_detail_transaksi', $id)->update($validatedData);
+        // Update Transaksi
+        $transaksi = Transaksi::findOrFail($id);
+        
 
-        return redirect()->route('DetailTransaksi.index')->with('success', 'Detail Transaksi berhasil diperbarui');
+        $total_pembayaran = 0; // Inisialisasi total pembayaran
+
+        // Update Details
+        if ($request->has('detailTransaksi')) {
+            foreach ($request->detailTransaksi as $detail) {
+                if (isset($detail['id_obat'])) {
+                    $obat = Obat::findOrFail($detail['id_obat']);
+                    $harga_obat = $obat->harga_obat;
+                    $jumlah_obat = $detail['jumlah_obat'];
+                    $subtotal = $harga_obat * $jumlah_obat; // Hitung subtotal pembayaran untuk setiap item
+                    $total_pembayaran += $subtotal; // Tambahkan subtotal ke total pembayaran
+
+                    // Cek apakah subtotal dan total_pembayaran dihitung dengan benar
+                    
+                    $existingDetail = DetailTransaksi::updateOrCreate(
+                        ['id_transaksi' => $transaksi->id_transaksi, 'id_obat' => $detail['id_obat']],
+                        ['jumlah_obat' => $jumlah_obat]
+                    );
+                }
+            }
+        }
+
+        $cek = $transaksi->update([
+            'tanggal_transaksi' => $request->tanggal_transaksi,
+            'id_pelanggan' => $request->id_pelanggan,
+            'total_pembayaran' => $total_pembayaran
+
+
+        ]);
+
+        return redirect()->route('DetailTransaksi.show', ['DetailTransaksi' => $transaksi->id_transaksi])->with('success', 'Transaksi berhasil diperbarui');
     }
+
+
 
     public function destroy($id)
     {
-        DetailTransaksi::where('id_detail_transaksi', $id)->delete();
+        $detailTransaksi = DetailTransaksi::findOrFail($id);
+        $detailTransaksi->delete();
 
-        return redirect()->route('DetailTransaksi.index')->with('success', 'Detail Transaksi berhasil dihapus');
+        return redirect()->route('Transaksi.show', ['Transaksi' => $detailTransaksi->transaksi->id_transaksi])->with('success', 'Detail Transaksi berhasil dihapus');
     }
 }

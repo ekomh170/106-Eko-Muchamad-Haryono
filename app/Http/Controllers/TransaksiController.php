@@ -72,14 +72,6 @@ class TransaksiController extends Controller
         return redirect()->route('Transaksi.index')->with('success', 'Transaksi berhasil ditambahkan');
     }
 
-    public function show($id)
-    {
-        $transaksi = Transaksi::with('pelanggan', 'MetodePembayaran')->findOrFail($id);
-        // Yang Berelasi Dengan Detail Transaksi
-        $transaksi_list = $transaksi->detailTransaksi;
-        return view('admin_panel.pages.transaksi.show', compact('transaksi', 'transaksi_list'));
-    }
-
     public function edit($id)
     {
         $transaksi = Transaksi::findOrFail($id);

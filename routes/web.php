@@ -57,8 +57,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/AdminPanel/Pelanggan', PelangganController::class);
 
     // Transaksi
-    Route::resource('/AdminPanel/Transaksi', TransaksiController::class);
-
+    Route::resource('/AdminPanel/Transaksi', TransaksiController::class)->except([
+        'show'
+    ]);
+    
     // Obat
     Route::resource('/AdminPanel/Obat', ObatController::class);
 
@@ -75,5 +77,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/AdminPanel/Roles', RoleController::class);
 
     // Detail Transaksi
-    Route::resource('/AdminPanel/DetailTransaksi', DetailTransaksiController::class);
+    Route::resource('/AdminPanel/DetailTransaksi', DetailTransaksiController::class)->except([
+        'create', 'store'
+    ]);;
 });
