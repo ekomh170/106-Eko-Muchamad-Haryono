@@ -51,7 +51,7 @@ class ObatController extends Controller
 
         Obat::create($validatedData);
 
-        return redirect()->route('obat.index')->with('success', 'Obat berhasil ditambahkan');
+        return redirect()->route('Obat.index')->with('success', 'Obat berhasil ditambahkan');
     }
 
     public function show($id)

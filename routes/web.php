@@ -51,7 +51,11 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::get('/AdminPanel', [DashboardController::class, 'index']);
 
     // Edit Profile
-    Route::resource('/AdminPanel/EditProfile', UserProfileController::class);
+    Route::get('/AdminPanel/EditProfile', [UserProfileController::class, 'index'])->name('user_profile.index');
+    Route::get('/AdminPanel/EditProfile/edit', [UserProfileController::class, 'edit'])->name('user_profile.edit');
+
+    // Update the profile
+    Route::put('/AdminPanel/EditProfile/update', [UserProfileController::class, 'update'])->name('user_profile.update');
 
     // Pelanggan
     Route::resource('/AdminPanel/Pelanggan', PelangganController::class);
@@ -60,7 +64,7 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::resource('/AdminPanel/Transaksi', TransaksiController::class)->except([
         'show'
     ]);
-    
+
     // Obat
     Route::resource('/AdminPanel/Obat', ObatController::class);
 
