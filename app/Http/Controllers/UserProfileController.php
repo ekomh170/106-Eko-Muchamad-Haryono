@@ -43,6 +43,6 @@ class UserProfileController extends Controller
             'jenis_kelamin' => $request->input('jenis_kelamin'),
         ]);
 
-        return redirect()->route('UserProfile.edit')->with('success', 'Profile updated successfully');
+        return redirect()->route('EditProfile.edit')->with('success', 'Profile updated successfully');
     }
 }
