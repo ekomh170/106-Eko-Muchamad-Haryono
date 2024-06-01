@@ -32,7 +32,7 @@
                 {{-- Dashboard --}}
                 <div class="navbar-nav w-100">
                     <a href="{{ url('/AdminPanel') }}" class="nav-item nav-link {{ Request::is('AdminPanel') ? 'active' : '' }}"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="{{ url('/AdminPanel/EditProfile') }}" class="nav-item nav-link {{ Request::is('AdminPanel/EditProfile') ? 'active' : '' }}"><i class="fa fa-user me-2"></i>Edit Profile</a>
+                    <a href="{{ url('/AdminPanel/EditProfile') }}" class="nav-item nav-link {{ Request::is('AdminPanel/EditProfile') ? 'active' : '' }}"><i class="fa fa-user me-2"></i>Profile</a>
 
                     {{-- Manajemen Pelanggan --}}
                     <div class="nav-item dropdown">
